@@ -8,12 +8,20 @@
 
 # Opis projekta
 ## Kratki opis
-Ovdje ide opis projekta
+#Evidencija aktivnosti
+<x>
+## 20.1.2023.
+Pocetak | Kraj
+------- | ----
+18:55   | 19:20
+### Kratki opis promjena
+Definirani zahtjevi aplikacije.
+Dovršena prva faza projekta.
+<x>
 
 ## Popis funkcionalnosti
-1. a
-2. b
-3. c
+1. Pregled stomatoloških usluga (naziv, opis i cjenik)
+2. Naručivanje na uslugu
 
 
 ## UPUTE
