@@ -1,5 +1,5 @@
 # Projektne faze
-- [ ] - Opis projekta
+- [x] - Opis projekta
 - [ ] - Početna struktura aplikacije
 - [ ] - Prototip
 - [ ] - Konzultacije
@@ -17,6 +17,16 @@ Pocetak | Kraj
 ### Kratki opis promjena
 Definirani zahtjevi aplikacije.
 Dovršena prva faza projekta.
+<x>
+
+<x>
+## 30.5.2023.
+Pocetak | Kraj
+------- | ----
+13:00   | 15:15
+### Kratki opis promjena
+Postavljeni ekrani navigacije.
+
 <x>
 
 ## Popis funkcionalnosti

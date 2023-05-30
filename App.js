@@ -1,13 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+const Stack=createNativeStackNavigator();
+
+import EkranHome from './screens/EkranHome';
+import EkranUsluge from './screens/EkranUsluge';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name='Naslovna' component={EkranHome} options={{headerShown:false}}/>
+        <Stack.Screen name='Usluge' component={EkranUsluge} options={{headerShown:false}}/>
+
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
@@ -18,4 +27,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  buttonContainer:{
+    flexDirection:'row'
+  }
 });
