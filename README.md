@@ -29,6 +29,16 @@ Postavljeni ekrani navigacije.
 
 <x>
 
+<x>
+## 31.5.2023.
+Pocetak | Kraj
+------- | ----
+14:00   | 16:30
+### Kratki opis promjena
+Dodan popis usluga, tab i navigacija.
+
+<x>
+
 ## Popis funkcionalnosti
 1. Pregled stomatoloških usluga (naziv, opis i cjenik)
 2. Naručivanje na uslugu
