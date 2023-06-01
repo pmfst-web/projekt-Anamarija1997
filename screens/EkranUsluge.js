@@ -1,25 +1,51 @@
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, StatusBar } from 'react-native'
-import React from 'react'
+import React,{useState} from 'react'
 import usluge from '../data/PopisUsluga'
+import listaPrijava from '../data/ListaPrijava'
+import Tipka from '../components/Tipka'
 
 
 const EkranUsluge = () => {
+    const [listOdabirUsluga, setListOdabirUsluga] = useState([]);
     const ispisUsluga = (i) => {
         return (
-            <TouchableOpacity style={styles.uslugeStil}>
-                <Text>
-                    {i.item.ime}
-                </Text>
-                <Text>
-                    {i.item.cijena}€
-                </Text>
+            <TouchableOpacity style={styles.uslugeStil} onPress={()=>dodajPrijavu(i.item.ime,i.item.cijena)}>
+                <View style={{flex:1, alignItems:'flex-start'}}>
+                    <Text>
+                        {i.item.ime}
+                    </Text>
+                </View>
+                <View style={{flex:1, alignItems:'flex-end'}}>
+                    <Text>
+                        {i.item.cijena}€
+                    </Text>
+                </View>
             </TouchableOpacity>
         )
+    }
+    function randomDate(start, end) {
+        return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+    }
+    const dodajPrijavu=(ime,cijena)=>{
+        const o={
+            id:listaPrijava.length+1,
+            datum:randomDate(new Date(2023,0,1),new Date()),
+            ime:ime,
+            cijena:cijena,
+        }
+        setListOdabirUsluga(e=>[...listOdabirUsluga,o]);
+    }
+    const podnesiPrijavu=()=>{
+        listaPrijava.push(listOdabirUsluga)
+
     }
     return (
         <View style={styles.container}>
             <View style={styles.container}>
                 <FlatList data={usluge} renderItem={ispisUsluga} contentContainerStyle={{alignItems:'center'}} style={styles.listContainer} />
+            </View>
+            <View>
+                <Tipka tekst='Podnesi' onPress={podnesiPrijavu}/>
             </View>
         </View>
     )
@@ -52,5 +78,8 @@ const styles = StyleSheet.create({
     listContainer:{
         width:300,
         borderWidth:1,
+        flexGrow:0,
+        paddingVertical:20,
+        marginBottom:20,
     }
 })

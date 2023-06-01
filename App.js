@@ -2,11 +2,14 @@ import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import EkranPrijave from './screens/EkranPrijave';
+
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 const Tab = createMaterialTopTabNavigator();
 
 const Stack = createNativeStackNavigator();
-
+const Drawer=createDrawerNavigator();
 import EkranHome from './screens/EkranHome';
 import EkranUsluge from './screens/EkranUsluge';
 import EkranProfil from './screens/EkranProfil';
@@ -26,13 +29,25 @@ export default function App() {
       </Tab.Navigator>
     )
   }
+  const StackEkrani=()=>{
+    return(
+      
+      <Stack.Navigator >
+        
+      <Stack.Screen name='HomePage' component={TabsEkrani} options={{ headerShown: false }}  />
+      <Stack.Screen name='Usluge' component={EkranUsluge} options={{ headerShown: false }} />
+
+    </Stack.Navigator>
+      )
+  }
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name='HomePage' component={TabsEkrani} options={{ headerShown: false }} />
-        <Stack.Screen name='Usluge' component={EkranUsluge} options={{ headerShown: false }} />
+      
+      <Drawer.Navigator>
+        <Drawer.Screen name='HomeDrawer' component={StackEkrani}/>
+        <Drawer.Screen name='PrijaveDrawer' component={EkranPrijave}/>
 
-      </Stack.Navigator>
+      </Drawer.Navigator>
     </NavigationContainer>
 
   );

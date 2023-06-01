@@ -39,6 +39,16 @@ Dodan popis usluga, tab i navigacija.
 
 <x>
 
+<x>
+## 1.6.2023.
+Pocetak | Kraj
+------- | ----
+11:50   | 13:40
+### Kratki opis promjena
+Dodavanje prijava
+
+<x>
+
 ## Popis funkcionalnosti
 1. Pregled stomatoloških usluga (naziv, opis i cjenik)
 2. Naručivanje na uslugu
