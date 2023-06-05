@@ -1,16 +1,16 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React from 'react'
 
-const buttonBox = (props) => {
+const ButtonBox = (props) => {
   return (
     <TouchableOpacity style={styles.container} onPress={props.onPress}>
       {props.ikona}
-      <Text>{props.naslov}</Text>
+      <Text style={{color: '#928DD4'}}>{props.naslov}</Text>
     </TouchableOpacity>
   )
 }
 
-export default buttonBox
+export default ButtonBox
 
 const styles = StyleSheet.create({
   container: {

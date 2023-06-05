@@ -26,7 +26,6 @@ Pocetak | Kraj
 13:00   | 15:15
 ### Kratki opis promjena
 Postavljeni ekrani navigacije.
-
 <x>
 
 <x>
@@ -36,7 +35,6 @@ Pocetak | Kraj
 14:00   | 16:30
 ### Kratki opis promjena
 Dodan popis usluga, tab i navigacija.
-
 <x>
 
 <x>
@@ -46,7 +44,26 @@ Pocetak | Kraj
 11:50   | 13:40
 ### Kratki opis promjena
 Dodavanje prijava
+<x>
 
+<x>
+## 2.6.2023.
+Pocetak | Kraj
+------- | ----
+13:40   | 13:40
+### Kratki opis promjena
+Dodavanje prijava
+<x>
+
+<x>
+## 5.6.2023.
+Pocetak | Kraj
+------- | ----
+12:20   | 16:55
+### Kratki opis promjena
+Promjena stila komponenti
+Dodan ekran za prikaz detalja prijava
+Promjena komponenti za ispis informacija
 <x>
 
 ## Popis funkcionalnosti
