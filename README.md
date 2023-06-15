@@ -50,7 +50,7 @@ Dodavanje prijava
 ## 2.6.2023.
 Pocetak | Kraj
 ------- | ----
-13:40   | 13:40
+13:40   | 20:50
 ### Kratki opis promjena
 Dodavanje prijava
 <x>
