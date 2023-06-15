@@ -10,7 +10,7 @@ const EkranHome = (prop) => {
         <View style={styles.container}>
             <View style={styles.buttonContainer}>
                 <ButtonBox ikona={<MaterialCommunityIcons name='tooth-outline' size={65} color={'#211E4F'}/>} naslov='Usluge' onPress = {() => prop.navigation.navigate('Usluge')} />
-                <ButtonBox ikona={<MaterialIcons name='description' size={65} color={'#211E4F'} />} naslov='O nama' />
+                {/* <ButtonBox ikona={<MaterialIcons name='description' size={65} color={'#211E4F'} />} naslov='O nama' /> */}
             </View>
         </View>
     )

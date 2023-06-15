@@ -1,15 +1,18 @@
 import { StyleSheet, Text, View, StatusBar, FlatList, TouchableOpacity, Dimensions, Modal, Button, Alert } from 'react-native'
 import React, { useState, useEffect } from 'react'
 
-import { TextInput } from '@react-native-material/core';
-
-import usluge from '../data/PopisUsluga'
-import listaPrijava from '../data/ListaPrijava';
+import { TextInput, Chip } from '@react-native-material/core';
 
 import Tipka from '../components/Tipka'
 import UslugeButtonBox from '../components/UslugeButtonBox';
 
+import { useSelector, useDispatch } from 'react-redux'
+import { unesiPrijavu } from '../store/actions/Dental';
+
+import { usernameHello } from '../data/LogiranKorisnik';
+
 const EkranUsluge = (prop) => {
+  const listaUsluga = useSelector(state => state.dental.usluge);
   //sprema odabrane servise
   const [listOdabirUsluga, setListOdabirUsluga] = useState([]);
   //vidljivost input modala
@@ -18,7 +21,10 @@ const EkranUsluge = (prop) => {
   const [popUpVisibility, setPopUpVisibility] = useState(false);
   //input field
   const [imeKorisnika, setImeKorisnika] = useState('');
+  //ukupna cijena odabranih usluga
+  const [trosak, setTrosak] = useState(0);
 
+  const dispatch = useDispatch();
 
   function randomDate() {
     return `${Math.floor(Math.random() * (30 - 1 + 1)) + 1}/ ${Math.floor(Math.random() * (12 - 1 + 1)) + 1}/ 2024`;
@@ -31,12 +37,12 @@ const EkranUsluge = (prop) => {
     }
 
     const o = {
-      key: listaPrijava.length + 1,
+      key: Math.random() * 10000,
       ime: imeKorisnika,
       datum: randomDate(),
       us: listOdabirUsluga
     }
-    listaPrijava.push(o);
+    dispatch(unesiPrijavu(o));
     setVisibility(false);
     setImeKorisnika('');
     setListOdabirUsluga([]);
@@ -57,11 +63,23 @@ const EkranUsluge = (prop) => {
       setPopUpVisibility(true); 0
       return
     }
+    if (usernameHello) {
+      setImeKorisnika(usernameHello);
+    }
     setVisibility(true);
   }
 
   return (
     <View style={styles.container}>
+      {usernameHello &&
+
+        <Text style={{ fontWeight: '100', fontSize: 24, maxWidth: '80%', marginBottom: 20 }}>
+
+          Pozdrav, {usernameHello} ! {'\n'}
+
+          Što možemo učiniti za vas danas?
+
+        </Text>}
       <Modal
         visible={popUpVisibility}
         animationType='slide'
@@ -84,8 +102,9 @@ const EkranUsluge = (prop) => {
         transparent={true}>
         <View style={styles.modalStil}>
           <View style={styles.modalInputContentStil}>
+            <Chip label={`Konačni trošak: ${trosak.toString()}€`} style={{ marginBottom: 20, alignItems: 'center' }} color='#928DD4' />
             <View style={{ alignItems: 'center' }}>
-              <TextInput variant='outlined' label='Unesite ime..' value={imeKorisnika} autoFocus color='#928DD4' onChangeText={(t) => UnesiIme(t)} style={styles.inputImeStil} />
+              <TextInput variant='outlined' label='Unesite ime..' value={usernameHello?usernameHello: imeKorisnika} autoFocus color='#928DD4' onChangeText={(t) => UnesiIme(t)} style={styles.inputImeStil} />
             </View>
 
             <View style={styles.buttonContainerModal}>
@@ -97,8 +116,8 @@ const EkranUsluge = (prop) => {
       </Modal>
 
       <View style={styles.listContainer}>
-        {usluge.map((it) => {
-          return <UslugeButtonBox title = {it.ime} cijena = {it.cijena} listaDodanihUsluga = {listOdabirUsluga} setListDodanihUsluga = {setListOdabirUsluga} />
+        {listaUsluga.map((it) => {
+          return <UslugeButtonBox title={it.imeUsluge} cijena={it.cijenaUsluge} listaDodanihUsluga={listOdabirUsluga} setListDodanihUsluga={setListOdabirUsluga} trosak={trosak} setTrosak={setTrosak} />
         })}
       </View>
 

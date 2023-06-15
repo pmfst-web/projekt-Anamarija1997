@@ -16,11 +16,13 @@ const UslugeButtonBox = (prop) => {
         if (odabrano) {
             setOdabran(false)
             prop.setListDodanihUsluga(prop.listaDodanihUsluga.filter(el => el.ime != prop.title));
+            prop.setTrosak(prop.trosak-prop.cijena);
             return
         }
 
         setOdabran(true)
         prop.setListDodanihUsluga([...prop.listaDodanihUsluga, { ime: prop.title, cijena: prop.cijena }]);
+        prop.setTrosak(prop.trosak+prop.cijena);
     }
 
     return (

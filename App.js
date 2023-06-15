@@ -13,6 +13,12 @@ const Tab = createMaterialTopTabNavigator();
 import { createDrawerNavigator } from '@react-navigation/drawer';
 const Drawer = createDrawerNavigator();
 
+import {legacy_createStore,combineReducers} from 'redux';
+import dentalReducer from './store/reducers/Dental';
+const glavniReducer=combineReducers({dental:dentalReducer});
+const store = legacy_createStore(glavniReducer);
+import {Provider} from 'react-redux'
+
 import EkranHome from './screens/EkranHome';
 import EkranUsluge from './screens/EkranUsluge';
 import EkranProfil from './screens/EkranProfil';
@@ -51,12 +57,14 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <Drawer.Navigator initialRouteName='Zubar'>
-        <Drawer.Screen name = 'Zubar' component={StackEkrani} options={{ drawerLabel: 'Home' }} />
-        <Drawer.Screen name = 'Popis prijava' component={StackPrijave} options={{unmountOnBlur:true}} />
-      </Drawer.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Drawer.Navigator initialRouteName='Zubar'>
+          <Drawer.Screen name = 'Zubar' component={StackEkrani} options={{ drawerLabel: 'Home' }} />
+          <Drawer.Screen name = 'Popis prijava' component={StackPrijave} options={{unmountOnBlur:true}} />
+        </Drawer.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 

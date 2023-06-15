@@ -1,20 +1,17 @@
 import { StyleSheet, Text, View, FlatList, Dimensions, TouchableOpacity, Modal, ScrollView } from 'react-native'
 import React, { useState, useEffect } from 'react'
 
-import listaPrijava from '../data/ListaPrijava';
 import PrijaveButtonBox from '../components/PrijaveButtonBox';
 
+import {useSelector} from 'react-redux'
+
 const EkranPrijave = (prop) => {
-  //const [prijave, setPrijave] = useState();
-
-
-  // useEffect(() => {
-  //   setPrijave(listaPrijava);
-  // }, [])
+  const listaPrijava=useSelector(state=>state.dental.prijave);
 
   const pregledajPrijavu = (o) => {
     //setPrijavaContent(o);
     prop.navigation.navigate('PrijavaDetalji', {
+      id: o.key,
       ime: o.ime,
       datum: o.datum,
       lstUsluga: o.us

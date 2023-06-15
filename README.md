@@ -1,9 +1,9 @@
 # Projektne faze
 - [x] - Opis projekta
-- [ ] - Početna struktura aplikacije
-- [ ] - Prototip
-- [ ] - Konzultacije
-- [ ] - Finalna verzija
+- [x] - Početna struktura aplikacije
+- [x] - Prototip
+- [x] - Konzultacije
+- [x] - Finalna verzija
 - [ ] - Obrana projekta
 
 # Opis projekta
@@ -65,6 +65,16 @@ Promjena stila komponenti
 Dodan ekran za prikaz detalja prijava
 Promjena komponenti za ispis informacija
 <x>
+
+<x>
+## 15.6.2023.
+Pocetak | Kraj
+------- | ----
+16:15   | 16:55
+### Kratki opis promjena
+Finalna verzija projekta
+<x>
+
 
 ## Popis funkcionalnosti
 1. Pregled stomatoloških usluga (naziv, opis i cjenik)

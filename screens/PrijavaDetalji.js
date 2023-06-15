@@ -1,32 +1,41 @@
 import { StyleSheet, Text, View, ScrollView, SafeAreaView } from 'react-native'
 import React, {useState, useEffect} from 'react'
+import Tipka from '../components/Tipka';
+import { useDispatch } from 'react-redux';
+import { otkaziTerminHandler } from '../store/actions/Dental';
 
 const PrijavaDetalji = (prop) => {
+    const [idPrijave, setIdPrijave] = useState(prop.route.params.id);
     const [listaUsluga, setListaUsluga] = useState(prop.route.params.lstUsluga);
     const [ime, setIme] = useState(prop.route.params.ime);
     const [datum, setDatum] = useState(prop.route.params.datum);
 
-    useEffect(() => {
-      console.log(listaUsluga);
-    }, [])
-    
+    const dispatch=useDispatch();
+
+    const otkaziHandler=() =>{
+        dispatch(otkaziTerminHandler(idPrijave))
+        prop.navigation.pop();
+    }
 
     return (
         <View style={styles.container}>
             <View style={styles.contentStil}>
                 <View>
-                    <Text>Ime: {ime} {'\n'}
+                    <Text style={{fontSize:24, fontWeight:'300'}}>Ime: {ime} {'\n'}
                         Datum: {datum} {'\n'}
                     </Text>
                 </View>
-                <View>
-                    <ScrollView>
+                <View style={{maxHeight:'50%'}}>
+                    <ScrollView contentContainerStyle={{alignItems:'center'}}>
                         {listaUsluga.map((it) => (
-                            <Text>
+                            <Text style={{fontSize:18, fontWeight:'100'}}>
                                 {it.ime}
                             </Text>
                         ))}
                     </ScrollView>
+                </View>
+                <View style={{marginVertical:30,width:'80%'}}>
+                    <Tipka tekst={'Otkaži'} onPress={otkaziHandler} />
                 </View>
             </View>
         </View>
